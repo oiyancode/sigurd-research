@@ -1,0 +1,357 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --s-navy: #0B1E3D;
+  --s-navy-mid: #142A52;
+  --s-navy-light: #1E3A6E;
+  --s-blue: #185FA5;
+  --s-blue-bright: #378ADD;
+  --s-silver: #B4B2A9;
+  --s-silver-light: #D3D1C7;
+  --s-silver-bright: #E8E6E0;
+  --s-white: #F4F2ED;
+  --s-steel: #6B8CAE;
+  --s-gold: #C8A96E;
+  --s-ink: #0D1B2A;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: 'DM Sans', sans-serif; }
+
+.ds-wrap { padding: 1rem 0 2rem; }
+
+.mode-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2rem;
+  padding: 4px;
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-lg);
+  width: fit-content;
+}
+
+.mode-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  color: var(--color-text-secondary);
+}
+.mode-btn.active {
+  background: var(--color-background-primary);
+  color: var(--color-text-primary);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.preview-frame {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  border: 0.5px solid var(--color-border-tertiary);
+}
+
+.frame-light { background: #F4F2ED; }
+.frame-dark  { background: #0B1E3D; }
+
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+.section-label:first-child { margin-top: 0; }
+
+/* ── LIGHT FRAME ── */
+.lf-header {
+  background: #fff;
+  border-bottom: 0.5px solid #DDD9D0;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lf-logo { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 600; color: #0B1E3D; letter-spacing: 0.05em; }
+.lf-logo span { color: #185FA5; }
+.lf-nav { display: flex; gap: 24px; }
+.lf-nav a { font-size: 13px; color: #888780; text-decoration: none; font-weight: 400; }
+.lf-nav a.active { color: #0B1E3D; font-weight: 500; }
+.lf-body { padding: 28px 24px; }
+.lf-hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #185FA5; margin-bottom: 8px; }
+.lf-hero-title { font-family: 'Cinzel', serif; font-size: 28px; font-weight: 600; color: #0B1E3D; line-height: 1.3; margin-bottom: 8px; }
+.lf-hero-sub { font-size: 14px; color: #888780; font-weight: 300; line-height: 1.6; margin-bottom: 20px; max-width: 360px; }
+.lf-btn-primary { background: #0B1E3D; color: #F4F2ED; border: none; padding: 10px 22px; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; letter-spacing: 0.02em; }
+.lf-btn-secondary { background: transparent; color: #0B1E3D; border: 0.5px solid #B4B2A9; padding: 10px 22px; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; margin-left: 8px; }
+.lf-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 24px; }
+.lf-card { background: #fff; border: 0.5px solid #DDD9D0; border-radius: 10px; padding: 16px; }
+.lf-card-icon { width: 32px; height: 32px; background: #E6F1FB; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+.lf-card-icon i { font-size: 16px; color: #185FA5; }
+.lf-card-title { font-size: 13px; font-weight: 500; color: #0B1E3D; margin-bottom: 4px; }
+.lf-card-desc { font-size: 12px; color: #888780; line-height: 1.5; }
+.lf-upload { background: #F9F8F5; border: 1.5px dashed #B4B2A9; border-radius: 10px; padding: 24px; text-align: center; margin-top: 16px; }
+.lf-upload-icon i { font-size: 28px; color: #B4B2A9; }
+.lf-upload-text { font-size: 13px; color: #888780; margin-top: 6px; }
+.lf-upload-text b { color: #185FA5; font-weight: 500; }
+.lf-badge { display: inline-flex; align-items: center; gap: 4px; background: #E6F1FB; color: #185FA5; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
+.lf-tag { display: inline-flex; background: #F1EFE8; color: #5F5E5A; font-size: 11px; padding: 3px 10px; border-radius: 20px; margin: 2px; }
+.lf-input { width: 100%; padding: 9px 12px; border: 0.5px solid #B4B2A9; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: #0B1E3D; background: #fff; outline: none; margin-top: 6px; }
+.lf-input::placeholder { color: #B4B2A9; }
+
+/* ── DARK FRAME ── */
+.df-header {
+  background: #0B1E3D;
+  border-bottom: 0.5px solid rgba(180,178,169,0.15);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.df-logo { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; color: #E8E6E0; letter-spacing: 0.08em; }
+.df-logo span { color: var(--s-gold); }
+.df-nav { display: flex; gap: 24px; }
+.df-nav a { font-size: 13px; color: rgba(180,178,169,0.6); text-decoration: none; }
+.df-nav a.active { color: #B4B2A9; }
+.df-body { padding: 28px 24px; background: #0D2144; }
+.df-hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--s-gold); margin-bottom: 8px; }
+.df-hero-title { font-family: 'Cinzel', serif; font-size: 26px; font-weight: 700; color: #E8E6E0; line-height: 1.3; margin-bottom: 8px; }
+.df-hero-sub { font-size: 14px; color: rgba(180,178,169,0.7); font-weight: 300; line-height: 1.6; margin-bottom: 20px; max-width: 360px; }
+.df-btn-primary { background: #E8E6E0; color: #0B1E3D; border: none; padding: 10px 22px; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; letter-spacing: 0.02em; }
+.df-btn-secondary { background: transparent; color: #B4B2A9; border: 0.5px solid rgba(180,178,169,0.3); padding: 10px 22px; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; cursor: pointer; margin-left: 8px; }
+.df-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 24px; }
+.df-card { background: rgba(255,255,255,0.05); border: 0.5px solid rgba(180,178,169,0.15); border-radius: 10px; padding: 16px; }
+.df-card-icon { width: 32px; height: 32px; background: rgba(200,169,110,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+.df-card-icon i { font-size: 16px; color: var(--s-gold); }
+.df-card-title { font-size: 13px; font-weight: 500; color: #D3D1C7; margin-bottom: 4px; }
+.df-card-desc { font-size: 12px; color: rgba(180,178,169,0.5); line-height: 1.5; }
+.df-upload { background: rgba(255,255,255,0.03); border: 1.5px dashed rgba(180,178,169,0.2); border-radius: 10px; padding: 24px; text-align: center; margin-top: 16px; }
+.df-upload-icon i { font-size: 28px; color: rgba(180,178,169,0.3); }
+.df-upload-text { font-size: 13px; color: rgba(180,178,169,0.5); margin-top: 6px; }
+.df-upload-text b { color: var(--s-gold); font-weight: 500; }
+.df-badge { display: inline-flex; align-items: center; gap: 4px; background: rgba(200,169,110,0.15); color: var(--s-gold); font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
+.df-tag { display: inline-flex; background: rgba(255,255,255,0.06); color: #888780; font-size: 11px; padding: 3px 10px; border-radius: 20px; margin: 2px; }
+.df-input { width: 100%; padding: 9px 12px; border: 0.5px solid rgba(180,178,169,0.2); border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: #D3D1C7; background: rgba(255,255,255,0.05); outline: none; margin-top: 6px; }
+.df-input::placeholder { color: rgba(180,178,169,0.3); }
+
+.rune-divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; }
+.rune-divider::before, .rune-divider::after { content: ''; flex: 1; height: 0.5px; background: rgba(200,169,110,0.2); }
+.rune-glyph { font-family: 'Cinzel', serif; font-size: 16px; color: rgba(200,169,110,0.4); }
+
+.tokens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+.token-group h4 { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 8px; letter-spacing: 0.06em; text-transform: uppercase; }
+.color-row { display: flex; gap: 4px; margin-bottom: 6px; align-items: center; }
+.swatch { width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0; }
+.color-info { font-size: 11px; color: var(--color-text-secondary); line-height: 1.4; }
+.color-name { color: var(--color-text-primary); font-weight: 500; }
+.type-row { margin-bottom: 10px; }
+.type-sample-l { color: #0B1E3D; }
+.type-sample-d { color: #E8E6E0; }
+</style>
+
+<div class="ds-wrap">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Design System do Sigurd — preview de dois modos visuais</h2>
+
+  <div class="mode-toggle">
+    <button class="mode-btn active" onclick="show('light', this)">Modo Claro — Minimalista</button>
+    <button class="mode-btn" onclick="show('dark', this)">Modo Escuro — Nórdico</button>
+    <button class="mode-btn" onclick="show('tokens', this)">Tokens & Tipografia</button>
+  </div>
+
+  <div id="panel-light">
+    <p class="section-label">Preview — Interface Luz</p>
+    <div class="preview-frame frame-light">
+      <div class="lf-header">
+        <div class="lf-logo">SIG<span>URD</span></div>
+        <nav class="lf-nav">
+          <a href="#" class="active">Dashboard</a>
+          <a href="#">Documentos</a>
+          <a href="#">Configurações</a>
+        </nav>
+        <span class="lf-badge"><i class="ti ti-circle-check" aria-hidden="true"></i> Drive conectado</span>
+      </div>
+      <div class="lf-body">
+        <div class="lf-hero-label">Sistema de Gestão</div>
+        <div class="lf-hero-title">Digitalizar e<br>organizar é simples.</div>
+        <div class="lf-hero-sub">Envie um documento, a IA extrai os dados e salva direto no seu Google Drive.</div>
+        <button class="lf-btn-primary">Enviar documento</button>
+        <button class="lf-btn-secondary">Ver arquivos</button>
+
+        <div class="lf-cards">
+          <div class="lf-card">
+            <div class="lf-card-icon"><i class="ti ti-file-text" aria-hidden="true"></i></div>
+            <div class="lf-card-title">OCR Inteligente</div>
+            <div class="lf-card-desc">Lê caligrafia difícil com precisão.</div>
+          </div>
+          <div class="lf-card">
+            <div class="lf-card-icon"><i class="ti ti-brand-google-drive" aria-hidden="true"></i></div>
+            <div class="lf-card-title">Seu Drive</div>
+            <div class="lf-card-desc">Dados vão direto à sua conta.</div>
+          </div>
+          <div class="lf-card">
+            <div class="lf-card-icon"><i class="ti ti-lock" aria-hidden="true"></i></div>
+            <div class="lf-card-title">Privacidade total</div>
+            <div class="lf-card-desc">Nenhum dado fica em nossos servidores.</div>
+          </div>
+        </div>
+
+        <div class="lf-upload">
+          <div class="lf-upload-icon"><i class="ti ti-cloud-upload" aria-hidden="true"></i></div>
+          <div class="lf-upload-text">Arraste o arquivo ou <b>clique para selecionar</b></div>
+          <div style="margin-top:8px;">
+            <span class="lf-tag">PDF</span>
+            <span class="lf-tag">JPG</span>
+            <span class="lf-tag">PNG</span>
+            <span class="lf-tag">TIFF</span>
+          </div>
+        </div>
+
+        <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <div style="font-size:12px; color:#888780; font-weight:500;">Ano do documento</div>
+            <input class="lf-input" type="text" placeholder="2024">
+          </div>
+          <div>
+            <div style="font-size:12px; color:#888780; font-weight:500;">Tipo</div>
+            <input class="lf-input" type="text" placeholder="Lista de presença">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-dark" style="display:none">
+    <p class="section-label">Preview — Interface Nórdica</p>
+    <div class="preview-frame frame-dark">
+      <div class="df-header">
+        <div class="df-logo">SIG<span>URD</span></div>
+        <nav class="df-nav">
+          <a href="#" class="active">Dashboard</a>
+          <a href="#">Documentos</a>
+          <a href="#">Configurações</a>
+        </nav>
+        <span class="df-badge"><i class="ti ti-circle-check" aria-hidden="true"></i> Drive conectado</span>
+      </div>
+      <div class="df-body">
+        <div class="df-hero-label">⸻ Sistema de Gestão</div>
+        <div class="df-hero-title">Documentos sob<br>controle total.</div>
+        <div class="df-hero-sub">Envie um documento, a IA extrai os dados e salva direto no seu Google Drive.</div>
+        <button class="df-btn-primary">Enviar documento</button>
+        <button class="df-btn-secondary">Ver arquivos</button>
+
+        <div class="rune-divider"><span class="rune-glyph">᛭</span></div>
+
+        <div class="df-cards">
+          <div class="df-card">
+            <div class="df-card-icon"><i class="ti ti-file-text" aria-hidden="true"></i></div>
+            <div class="df-card-title">OCR Inteligente</div>
+            <div class="df-card-desc">Lê caligrafia difícil com precisão.</div>
+          </div>
+          <div class="df-card">
+            <div class="df-card-icon"><i class="ti ti-brand-google-drive" aria-hidden="true"></i></div>
+            <div class="df-card-title">Seu Drive</div>
+            <div class="df-card-desc">Dados vão direto à sua conta.</div>
+          </div>
+          <div class="df-card">
+            <div class="df-card-icon"><i class="ti ti-lock" aria-hidden="true"></i></div>
+            <div class="df-card-title">Privacidade total</div>
+            <div class="df-card-desc">Nenhum dado fica em nossos servidores.</div>
+          </div>
+        </div>
+
+        <div class="df-upload">
+          <div class="df-upload-icon"><i class="ti ti-cloud-upload" aria-hidden="true"></i></div>
+          <div class="df-upload-text">Arraste o arquivo ou <b>clique para selecionar</b></div>
+          <div style="margin-top:8px;">
+            <span class="df-tag">PDF</span>
+            <span class="df-tag">JPG</span>
+            <span class="df-tag">PNG</span>
+            <span class="df-tag">TIFF</span>
+          </div>
+        </div>
+
+        <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px; padding-bottom:4px;">
+          <div>
+            <div style="font-size:12px; color:rgba(180,178,169,0.5); font-weight:400; letter-spacing:0.04em;">Ano do documento</div>
+            <input class="df-input" type="text" placeholder="2024">
+          </div>
+          <div>
+            <div style="font-size:12px; color:rgba(180,178,169,0.5); font-weight:400; letter-spacing:0.04em;">Tipo</div>
+            <input class="df-input" type="text" placeholder="Lista de presença">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-tokens" style="display:none">
+    <p class="section-label">Paleta de Cores</p>
+    <div class="tokens-grid">
+      <div class="token-group">
+        <h4>Modo Claro</h4>
+        <div class="color-row"><div class="swatch" style="background:#0B1E3D;"></div><div class="color-info"><div class="color-name">Navy Primary</div>#0B1E3D</div></div>
+        <div class="color-row"><div class="swatch" style="background:#185FA5;"></div><div class="color-info"><div class="color-name">Blue Action</div>#185FA5</div></div>
+        <div class="color-row"><div class="swatch" style="background:#378ADD;"></div><div class="color-info"><div class="color-name">Blue Bright</div>#378ADD</div></div>
+        <div class="color-row"><div class="swatch" style="background:#B4B2A9; border: 0.5px solid #ccc;"></div><div class="color-info"><div class="color-name">Silver Mid</div>#B4B2A9</div></div>
+        <div class="color-row"><div class="swatch" style="background:#F4F2ED; border: 0.5px solid #ccc;"></div><div class="color-info"><div class="color-name">Surface Warm</div>#F4F2ED</div></div>
+      </div>
+      <div class="token-group">
+        <h4>Modo Escuro</h4>
+        <div class="color-row"><div class="swatch" style="background:#0B1E3D;"></div><div class="color-info"><div class="color-name">Navy Base</div>#0B1E3D</div></div>
+        <div class="color-row"><div class="swatch" style="background:#0D2144;"></div><div class="color-info"><div class="color-name">Navy Body</div>#0D2144</div></div>
+        <div class="color-row"><div class="swatch" style="background:#C8A96E;"></div><div class="color-info"><div class="color-name">Gold Accent</div>#C8A96E</div></div>
+        <div class="color-row"><div class="swatch" style="background:#D3D1C7; border: 0.5px solid #ccc;"></div><div class="color-info"><div class="color-name">Silver Light</div>#D3D1C7</div></div>
+        <div class="color-row"><div class="swatch" style="background:#E8E6E0; border: 0.5px solid #ccc;"></div><div class="color-info"><div class="color-name">Parchment</div>#E8E6E0</div></div>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top:24px;">Tipografia</p>
+    <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 20px; margin-bottom:12px;">
+      <div style="font-size:11px; color:var(--color-text-tertiary); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Cinzel — Display / Logo / Títulos</div>
+      <div style="font-family:'Cinzel',serif; font-size:28px; font-weight:700; color:var(--color-text-primary); line-height:1.2;">SIGURD</div>
+      <div style="font-family:'Cinzel',serif; font-size:20px; font-weight:600; color:var(--color-text-primary); margin-top:6px;">Gestão de Documentos</div>
+      <div style="font-family:'Cinzel',serif; font-size:15px; font-weight:400; color:var(--color-text-secondary); margin-top:4px;">Organização inteligente</div>
+    </div>
+    <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 20px; margin-bottom:12px;">
+      <div style="font-size:11px; color:var(--color-text-tertiary); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">DM Sans — Interface / Corpo / Labels</div>
+      <div style="font-family:'DM Sans',sans-serif; font-size:16px; font-weight:500; color:var(--color-text-primary);">Envie um documento, a IA extrai os dados</div>
+      <div style="font-family:'DM Sans',sans-serif; font-size:14px; font-weight:400; color:var(--color-text-secondary); margin-top:4px;">e salva direto no seu Google Drive com privacidade total.</div>
+      <div style="font-family:'DM Sans',sans-serif; font-size:12px; font-weight:300; color:var(--color-text-tertiary); margin-top:4px; letter-spacing:0.02em;">Ano do documento — Tipo — Colaboradores</div>
+    </div>
+    <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 20px;">
+      <div style="font-size:11px; color:var(--color-text-tertiary); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">JetBrains Mono — IDs / Tokens / Código</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--color-text-primary);">user_id: <span style="color:#378ADD;">SIG-2026-001</span></div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--color-text-secondary); margin-top:4px;">refresh_token: ya29.a0AcM81...</div>
+    </div>
+
+    <p class="section-label" style="margin-top:24px;">Componentes</p>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; background:var(--color-background-secondary); border-radius:var(--border-radius-lg); padding:16px;">
+      <button style="background:#0B1E3D;color:#F4F2ED;border:none;padding:9px 20px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;">Primário</button>
+      <button style="background:transparent;color:#0B1E3D;border:0.5px solid #B4B2A9;padding:9px 20px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;">Secundário</button>
+      <button style="background:#185FA5;color:#fff;border:none;padding:9px 20px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;">Blue CTA</button>
+      <span style="background:#E6F1FB;color:#185FA5;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;font-family:'DM Sans',sans-serif;">Drive conectado</span>
+      <span style="background:#EAF3DE;color:#3B6D11;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;font-family:'DM Sans',sans-serif;">Processado</span>
+      <span style="background:#FAEEDA;color:#854F0B;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;font-family:'DM Sans',sans-serif;">Pendente</span>
+      <span style="background:#FCEBEB;color:#A32D2D;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;font-family:'DM Sans',sans-serif;">Erro</span>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(mode, btn) {
+  document.getElementById('panel-light').style.display = 'none';
+  document.getElementById('panel-dark').style.display = 'none';
+  document.getElementById('panel-tokens').style.display = 'none';
+  document.getElementById('panel-' + mode).style.display = 'block';
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+

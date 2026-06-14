@@ -1,0 +1,155 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('/assets/fonts/Cinzel/Cinzel-VariableFont_wght.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/assets/fonts/DMSans/DMSans-Variable.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/assets/fonts/JetBrainsMono/JetBrainsMono-Variable.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  font-family:
+    'DM Sans',
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    sans-serif;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@theme {
+  --font-sans:
+    'DM Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-display: 'Cinzel', serif;
+  --font-mono:
+    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --color-bg: var(--bg);
+  --color-frame: var(--frame-bg);
+  --color-header: var(--header-bg);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-brand: var(--brand-accent);
+  --color-nav: var(--nav);
+  --color-nav-active: var(--nav-active);
+  --color-badge-bg: var(--badge-bg);
+  --color-badge-fg: var(--badge-fg);
+  --color-card: var(--card-bg);
+  --color-icon-bg: var(--icon-bg);
+  --color-icon-fg: var(--icon-fg);
+  --color-btn-primary-bg: var(--btn-primary-bg);
+  --color-btn-primary-fg: var(--btn-primary-fg);
+  --color-btn-secondary-border: var(--btn-secondary-border);
+  --color-btn-secondary-fg: var(--btn-secondary-fg);
+  --color-upload-bg: var(--upload-bg);
+  --color-upload-border: var(--upload-border);
+  --color-upload-icon-bg: var(--upload-icon-bg);
+  --color-upload-icon-fg: var(--upload-icon-fg);
+  --color-tag-bg: var(--tag-bg);
+  --color-tag-fg: var(--tag-fg);
+  --color-label: var(--label);
+  --color-input-bg: var(--input-bg);
+  --color-input-border: var(--input-border);
+  --color-placeholder: var(--placeholder);
+  --color-toggle-bg: var(--toggle-bg);
+  --color-toggle-active-bg: var(--toggle-active-bg);
+  --color-toggle-active-text: var(--toggle-active-text);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f4f2ed;
+  --frame-bg: #f4f2ed;
+  --header-bg: #ffffff;
+  --text: #0b1e3d;
+  --text-muted: #888780;
+  --border: #ddd9d0;
+  --accent: #185fa5;
+  --brand-accent: #185fa5;
+  --nav: #888780;
+  --nav-active: #0b1e3d;
+  --badge-bg: #e6f1fb;
+  --badge-fg: #185fa5;
+  --card-bg: #ffffff;
+  --icon-bg: #e6f1fb;
+  --icon-fg: #185fa5;
+  --btn-primary-bg: #0b1e3d;
+  --btn-primary-fg: #f4f2ed;
+  --btn-secondary-border: #b4b2a9;
+  --btn-secondary-fg: #0b1e3d;
+  --upload-bg: #f9f8f5;
+  --upload-border: #b4b2a9;
+  --upload-icon-bg: transparent;
+  --upload-icon-fg: #b4b2a9;
+  --tag-bg: #f1efe8;
+  --tag-fg: #5f5e5a;
+  --label: #888780;
+  --input-bg: #ffffff;
+  --input-border: #b4b2a9;
+  --placeholder: #b4b2a9;
+  --toggle-bg: #f1efe8;
+  --toggle-active-bg: #ffffff;
+  --toggle-active-text: #0b1e3d;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0b1e3d;
+  --frame-bg: #0d2144;
+  --header-bg: #0b1e3d;
+  --text: #e8e6e0;
+  --text-muted: rgba(180, 178, 169, 0.7);
+  --border: rgba(180, 178, 169, 0.15);
+  --accent: #c8a96e;
+  --brand-accent: #c8a96e;
+  --nav: rgba(180, 178, 169, 0.6);
+  --nav-active: #b4b2a9;
+  --badge-bg: rgba(200, 169, 110, 0.15);
+  --badge-fg: #c8a96e;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --icon-bg: rgba(200, 169, 110, 0.15);
+  --icon-fg: #c8a96e;
+  --btn-primary-bg: #e8e6e0;
+  --btn-primary-fg: #0b1e3d;
+  --btn-secondary-border: rgba(180, 178, 169, 0.3);
+  --btn-secondary-fg: #b4b2a9;
+  --upload-bg: rgba(255, 255, 255, 0.03);
+  --upload-border: rgba(180, 178, 169, 0.2);
+  --upload-icon-bg: transparent;
+  --upload-icon-fg: rgba(180, 178, 169, 0.35);
+  --tag-bg: rgba(255, 255, 255, 0.06);
+  --tag-fg: rgba(180, 178, 169, 0.7);
+  --label: rgba(180, 178, 169, 0.6);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(180, 178, 169, 0.2);
+  --placeholder: rgba(180, 178, 169, 0.35);
+  --toggle-bg: rgba(255, 255, 255, 0.06);
+  --toggle-active-bg: rgba(255, 255, 255, 0.12);
+  --toggle-active-text: #e8e6e0;
+  --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+}
