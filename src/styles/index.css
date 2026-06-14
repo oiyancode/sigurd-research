@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 @font-face {
   font-family: 'Cinzel';
   src: url('/assets/fonts/Cinzel/Cinzel-VariableFont_wght.ttf')
