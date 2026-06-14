@@ -29,6 +29,8 @@ ehthumbs.db
 .vercel/
 
 .cursor/
+
+src/legacy/
 .windsurf/
 .continue/
 .aider*
